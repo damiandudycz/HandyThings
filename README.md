@@ -1,3 +1,3 @@
 # HandyThings
 
-A description of this package.
+Some handy functions and types.
