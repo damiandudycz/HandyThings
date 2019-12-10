@@ -2,14 +2,16 @@ import XCTest
 @testable import HandyThings
 
 final class HandyThingsTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(HandyThings().text, "Hello, World!")
+    
+    func testDispatchQueueInitWithRawRepresentable() {
+        enum TestEnum: String {
+            case foo
+        }
+        let queue = DispatchQueue(label: TestEnum.foo)
+        XCTAssertEqual(queue.label, TestEnum.foo.rawValue)
     }
-
+    
     static var allTests = [
-        ("testExample", testExample),
+        ("testDispatchQueueInitWithRawRepresentable", testDispatchQueueInitWithRawRepresentable),
     ]
 }
