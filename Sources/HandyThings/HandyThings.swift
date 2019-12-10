@@ -18,3 +18,18 @@ public extension DispatchQueue {
     }
 
 }
+
+public protocol EquatableByReference: AnyObject, Equatable {}
+public extension EquatableByReference {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs === rhs
+    }
+}
+
+public protocol HashableByReference: AnyObject, Hashable {}
+public extension HashableByReference {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+}
+
