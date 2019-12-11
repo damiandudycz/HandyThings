@@ -9,24 +9,24 @@ public extension Set {
     
     typealias Change = (added: Set, removed: Set)
     
-    static func change(added: Set) -> Change {
+    static func valuesChange(added: Set) -> Change {
         Change(added: added, removed: Set())
     }
     
-    static func change(removed: Set) -> Change {
+    static func valuesChange(removed: Set) -> Change {
         Change(added: Set(), removed: removed)
     }
     
-    func objects(addedToOldValue oldValue: Set) -> Set {
+    func values(addedToOldValue oldValue: Set) -> Set {
         subtracting(oldValue)
     }
     
-    func objects(removedFromOldValue oldValue: Set) -> Set {
+    func values(removedFromOldValue oldValue: Set) -> Set {
         oldValue.subtracting(self)
     }
     
     func change(fromOldValue oldValue: Set) -> Change {
-        (objects(addedToOldValue: oldValue), objects(removedFromOldValue: oldValue))
+        (values(addedToOldValue: oldValue), values(removedFromOldValue: oldValue))
     }
     
     mutating func apply(change: Change) {

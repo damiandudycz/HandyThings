@@ -7,28 +7,28 @@
 
 public extension Array where Element: Equatable {
     
-    typealias Change = (added: [Element], removed: [Element])
+    typealias ValuesChange = (added: [Element], removed: [Element])
     
-    static func change(added: [Element]) -> Change {
-        Change(added: added, removed: [])
+    static func valuesChange(added: [Element]) -> ValuesChange {
+        ValuesChange(added: added, removed: [])
     }
-    static func change(removed: [Element]) -> Change {
-        Change(added: [], removed: removed)
+    static func valuesChange(removed: [Element]) -> ValuesChange {
+        ValuesChange(added: [], removed: removed)
     }
 
-    func objects(addedToOldValue oldValue: [Element]) -> [Element] {
+    func values(addedToOldValue oldValue: [Element]) -> [Element] {
         filter { (element) in !oldValue.contains { $0 == element } }
     }
     
-    func objects(removedFromOldValue oldValue: [Element]) -> [Element] {
+    func values(removedFromOldValue oldValue: [Element]) -> [Element] {
         oldValue.filter { (element) in !contains { $0 == element } }
     }
     
-    func change(fromOldValue oldValue: [Element]) -> Change {
-        (objects(addedToOldValue: oldValue), objects(removedFromOldValue: oldValue))
+    func change(fromOldValue oldValue: [Element]) -> ValuesChange {
+        (values(addedToOldValue: oldValue), values(removedFromOldValue: oldValue))
     }
 
-    mutating func apply(change: Change) {
+    mutating func apply(change: ValuesChange) {
         var newArray = filter { (element) in !change.removed.contains { $0 == element } }
         newArray.append(contentsOf: change.added)
         self = newArray
