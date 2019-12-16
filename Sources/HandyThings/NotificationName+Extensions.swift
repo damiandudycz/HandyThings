@@ -15,5 +15,7 @@ public extension Notification.Name {
     static let didEnterBackgroundNotification      = UIApplication.didEnterBackgroundNotification
     static let significantTimeChangeNotification   = UIApplication.significantTimeChangeNotification
     static let willTerminateNotification           = UIApplication.willTerminateNotification
+    
+    static let willChangeStatusBarOrientationNotification = UIApplication.willChangeStatusBarOrientationNotification
 
 }
