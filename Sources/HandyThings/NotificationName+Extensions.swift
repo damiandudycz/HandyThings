@@ -16,6 +16,4 @@ public extension Notification.Name {
     static let significantTimeChangeNotification   = UIApplication.significantTimeChangeNotification
     static let willTerminateNotification           = UIApplication.willTerminateNotification
     
-    static let willChangeStatusBarOrientationNotification = UIApplication.willChangeStatusBarOrientationNotification
-
 }
