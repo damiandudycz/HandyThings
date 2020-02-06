@@ -43,3 +43,11 @@ public extension Array where Element: Equatable {
     }
     
 }
+
+public extension Array where Element: OptionSet {
+    
+    var joined: Element {
+        reduce(Element()) { $0.union($1) }
+    }
+    
+}
