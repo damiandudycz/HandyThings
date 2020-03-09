@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  CGSize+Extensions.swift
 //  
 //
-//  Created by Home Dudycz on 05/02/2020.
+//  Created by Damian Dudycz on 05/02/2020.
 //
 
 import CoreGraphics

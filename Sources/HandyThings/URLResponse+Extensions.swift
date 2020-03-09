@@ -2,7 +2,7 @@
 //  URLResponse+Extensions.swift
 //  
 //
-//  Created by Home Dudycz on 11/12/2019.
+//  Created by Damian Dudycz on 11/12/2019.
 //
 
 import Foundation

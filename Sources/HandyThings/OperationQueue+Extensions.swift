@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  OperationQueue+Extensions.swift
 //  
 //
-//  Created by Home Dudycz on 18/02/2020.
+//  Created by Damian Dudycz on 18/02/2020.
 //
 
 import Foundation
