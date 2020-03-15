@@ -18,8 +18,7 @@ public extension URL {
     }
     
     init?(baseURLString: String, parameters: [String : CustomStringConvertible]) {
-        let parametersStrings = parameters.map { (arg) -> String in
-            let (key, value) = arg
+        let parametersStrings = parameters.map { (key, value) -> String in
             guard let urlKey = key.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
                 fatalError()
             }
