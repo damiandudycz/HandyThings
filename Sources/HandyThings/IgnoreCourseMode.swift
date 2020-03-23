@@ -1,8 +1,9 @@
 //
 //  IgnoreCourseMode.swift
-//  
+//  HandyThings
 //
 //  Created by Damian Dudycz on 21/12/2019.
+//  Copyright © 2019 Damian Dudycz. All rights reserved.
 //
 
 import CoreLocation

@@ -1,8 +1,9 @@
 //
 //  Equatable+Extensions.swift
-//  
+//  HandyThings
 //
 //  Created by Damian Dudycz on 11/12/2019.
+//  Copyright © 2019 Damian Dudycz. All rights reserved.
 //
 
 public extension Equatable {
