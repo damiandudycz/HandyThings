@@ -6,8 +6,11 @@
 //
 
 public protocol HashableByReference: AnyObject, Hashable {}
+
 public extension HashableByReference {
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))
     }
+    
 }

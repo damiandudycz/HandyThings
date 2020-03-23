@@ -6,9 +6,11 @@
 //
 
 public protocol EquatableByReference: AnyObject, Equatable {}
+
 public extension EquatableByReference {
+    
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs === rhs
     }
+    
 }
-
