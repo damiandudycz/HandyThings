@@ -2,7 +2,7 @@
 //  Combine+Helpers.swift
 //  HandyThings
 //
-//  Created by Home Dudycz on 26/05/2020.
+//  Created by Damian Dudycz on 26/05/2020.
 //  Copyright © 2020 Damian Dudycz. All rights reserved.
 //
 
