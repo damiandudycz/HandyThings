@@ -12,6 +12,6 @@ public func fatalError<ErrorType: RawRepresentable>(_ error: ErrorType) -> Never
     fatalError(error.rawValue)
 }
 
-public var isApplicationActive: Bool {
+public var applicationIsActive: Bool {
     UIApplication.shared.applicationState == .active
 }
