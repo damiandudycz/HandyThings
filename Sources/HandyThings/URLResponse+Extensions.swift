@@ -10,8 +10,12 @@ import Foundation
 
 extension URLResponse {
     
+    public var httpURLResponse: HTTPURLResponse? {
+        self as? HTTPURLResponse
+    }
+    
     public var status: ResponseStatus {
-        guard let statusCode = (self as? HTTPURLResponse)?.statusCode else { return .unknown }
+        guard let statusCode = httpURLResponse?.statusCode else { return .unknown }
         return ResponseStatus(rawValue: statusCode) ?? .unknown
     }
     
