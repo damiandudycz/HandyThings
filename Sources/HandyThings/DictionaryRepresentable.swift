@@ -14,11 +14,10 @@ public protocol DictionaryRepresentable: Encodable {
 }
 
 public extension DictionaryRepresentable {
-    
+
+    // TODO: Replace with use of DictionaryDecoder from https://stackoverflow.com/questions/45209743/how-can-i-use-swift-s-codable-to-encode-into-a-dictionary
     func dictionary() throws -> [String : CustomStringConvertible] {
-        let data = try JSONEncoder().encode(self)
-        // Note - For some reason converting directly to [String : CustomStringConvertible] doesnt work. We need to convert to [String : Any] first.
-        guard let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] as? [String : CustomStringConvertible] else {
+        guard let dictionary = try DictionaryEncoder().encode(self) as? [String : CustomStringConvertible] else {
             throw DictionaryRepresentableError.failedToConvertToDictionary
         }
         return dictionary
@@ -26,6 +25,6 @@ public extension DictionaryRepresentable {
     
 }
 
-enum DictionaryRepresentableError: Error {
+public enum DictionaryRepresentableError: Error {
     case failedToConvertToDictionary
 }
