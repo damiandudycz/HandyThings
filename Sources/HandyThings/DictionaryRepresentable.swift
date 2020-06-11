@@ -25,7 +25,7 @@ public extension DictionaryRepresentable {
     
 }
 
-extension Dictionary: DictionaryRepresentable where Key == String, Value == String {}
+extension Dictionary: DictionaryRepresentable where Key == String, Value: Encodable {}
 
 public enum DictionaryRepresentableError: Error {
     case failedToConvertToDictionary
