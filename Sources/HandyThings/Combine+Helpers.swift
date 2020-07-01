@@ -45,13 +45,13 @@ public extension CurrentValueSubject {
 
 public extension Publisher where Failure == Never {
     
-    func assignWeak<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>, on object: Root) -> AnyCancellable where Root: AnyObject {
+    func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>, onWeak object: Root) -> AnyCancellable where Root: AnyObject {
         sink { [weak object] (value) in
             object?[keyPath: keyPath] = value
         }
     }
 
-    func assignUnowned<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>, on object: Root) -> AnyCancellable where Root: AnyObject {
+    func assign<Root>(to keyPath: ReferenceWritableKeyPath<Root, Output>, onUnowned object: Root) -> AnyCancellable where Root: AnyObject {
         sink { [unowned object] (value) in
             object[keyPath: keyPath] = value
         }
