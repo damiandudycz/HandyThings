@@ -52,3 +52,22 @@ public extension Array where Element: OptionSet {
     }
     
 }
+
+public extension Array {
+    
+    func forEachWithIndex(_ body: (_ element: Element, _ index: Int) -> Void) {
+        for i in 0..<count {
+            let element = self[i]
+            body(element, i)
+        }
+    }
+    
+    func mapWithIndex<NewType>(_ body: (_ element: Element, _ index: Int) -> NewType) -> [NewType] {
+        var newArray = [NewType]()
+        forEachWithIndex { (element, index) in
+            newArray.append(body(element, index))
+        }
+        return newArray
+    }
+    
+}

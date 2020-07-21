@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: Move to HandyThings.
 public extension Data {
     
     enum ConversionError: Error {
