@@ -32,8 +32,8 @@ public enum StringEncryption {
         return String(bytes: decryptedArray, encoding: .utf8)
     }
         
-    public static func decrypt(file fileName: String, using key: String) -> String? {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: nil), let data = try? Data(contentsOf: url) else {
+    public static func decrypt(file fileName: String, in bundle: Bundle, using key: String) -> String? {
+        guard let url = bundle.url(forResource: fileName, withExtension: nil), let data = try? Data(contentsOf: url) else {
             return nil
         }
         return decrypt(data: data, using: key)
