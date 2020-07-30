@@ -8,24 +8,24 @@
 
 public extension Array where Element: Equatable {
     
-    typealias ValuesChange = (added: [Element], removed: [Element])
+    typealias ValuesChange = (added: Self, removed: Self)
     
-    static func valuesChange(added: [Element]) -> ValuesChange {
+    static func valuesChange(added: Self) -> ValuesChange {
         ValuesChange(added: added, removed: [])
     }
-    static func valuesChange(removed: [Element]) -> ValuesChange {
+    static func valuesChange(removed: Self) -> ValuesChange {
         ValuesChange(added: [], removed: removed)
     }
 
-    func values(addedToOldValue oldValue: [Element]) -> [Element] {
+    func values(addedToOldValue oldValue: Self) -> Self {
         filter { (element) in !oldValue.contains { $0 == element } }
     }
     
-    func values(removedFromOldValue oldValue: [Element]) -> [Element] {
+    func values(removedFromOldValue oldValue: Self) -> Self {
         oldValue.filter { (element) in !contains { $0 == element } }
     }
     
-    func change(fromOldValue oldValue: [Element]) -> ValuesChange {
+    func change(fromOldValue oldValue: Self) -> ValuesChange {
         (values(addedToOldValue: oldValue), values(removedFromOldValue: oldValue))
     }
 
@@ -35,7 +35,7 @@ public extension Array where Element: Equatable {
         self = newArray
     }
 
-    mutating func remove(contentsOf objects: [Element]) {
+    mutating func remove(contentsOf objects: Self) {
         self = filter { (element) in !objects.contains { $0 == element } }
     }
     

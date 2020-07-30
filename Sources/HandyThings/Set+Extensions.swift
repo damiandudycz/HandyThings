@@ -8,25 +8,25 @@
 
 public extension Set {
     
-    typealias Change = (added: Set, removed: Set)
+    typealias Change = (added: Self, removed: Self)
     
-    static func valuesChange(added: Set) -> Change {
-        Change(added: added, removed: Set())
+    static func valuesChange(added: Self) -> Change {
+        Change(added: added, removed: Self())
     }
     
-    static func valuesChange(removed: Set) -> Change {
-        Change(added: Set(), removed: removed)
+    static func valuesChange(removed: Self) -> Change {
+        Change(added: Self(), removed: removed)
     }
     
-    func values(addedToOldValue oldValue: Set) -> Set {
+    func values(addedToOldValue oldValue: Self) -> Self {
         subtracting(oldValue)
     }
     
-    func values(removedFromOldValue oldValue: Set) -> Set {
+    func values(removedFromOldValue oldValue: Self) -> Self {
         oldValue.subtracting(self)
     }
     
-    func change(fromOldValue oldValue: Set) -> Change {
+    func change(fromOldValue oldValue: Self) -> Change {
         (values(addedToOldValue: oldValue), values(removedFromOldValue: oldValue))
     }
     
@@ -34,19 +34,19 @@ public extension Set {
         self = subtracting(change.removed).union(change.added)
     }
     
-    mutating func insert(contentsOf set: Set) {
+    mutating func insert(contentsOf set: Self) {
         self = union(set)
     }
     
-    mutating func remove(contentsOf set: Set) {
+    mutating func remove(contentsOf set: Self) {
         self = filterSet { !set.contains($0) }
     }
     
-    func filterSet(_ isIncluded: (Element) throws -> Bool) rethrows -> Set {
-        try Set(filter(isIncluded))
+    func filterSet(_ isIncluded: (Element) throws -> Bool) rethrows -> Self {
+        try Self(filter(isIncluded))
     }
     
-    func except(_ element: Element?) -> Set {
+    func except(_ element: Element?) -> Self {
         guard let element = element else { return self }
         var newSet = self
         newSet.remove(element)
