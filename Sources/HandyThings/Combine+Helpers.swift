@@ -30,7 +30,7 @@ public extension Publisher {
     
     func withPrevious(initialValue: Output) -> Publishers.Scan<Self, Change> {
         let initialValue = initialValue
-        return scan((oldValue: initialValue, newValue: initialValue)) { (oldValue: $0.1, newValue: $1) }
+        return scan((oldValue: initialValue, newValue: initialValue)) { Change(oldValue: $0.1, newValue: $1) }
     }
     
 }

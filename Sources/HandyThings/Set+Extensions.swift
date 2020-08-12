@@ -7,9 +7,7 @@
 //
 
 public extension Set {
-    
-    typealias Change = (added: Self, removed: Self)
-    
+        
     static func valuesChange(added: Self) -> Change {
         Change(added: added, removed: Self())
     }
@@ -27,7 +25,7 @@ public extension Set {
     }
     
     func change(fromOldValue oldValue: Self) -> Change {
-        (values(addedToOldValue: oldValue), values(removedFromOldValue: oldValue))
+        Change(added: values(addedToOldValue: oldValue), removed: values(removedFromOldValue: oldValue))
     }
     
     mutating func apply(change: Change) {
