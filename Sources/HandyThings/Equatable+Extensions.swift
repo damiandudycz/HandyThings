@@ -8,8 +8,12 @@
 
 public extension Equatable {
 
-    func equalsAnyOf(_ values: Self...) -> Bool {
+    func equalsAnyOf(_ values: [Self]) -> Bool {
         values.contains { (element) in element == self }
+    }
+
+    func equalsAnyOf(_ values: Self...) -> Bool {
+        equalsAnyOf(values)
     }
 
 }
