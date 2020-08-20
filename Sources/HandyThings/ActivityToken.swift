@@ -17,7 +17,7 @@ public class ActivityToken: EquatableByReference {
     public private(set) var state: State
     
     @discardableResult public func cancel() -> Bool {
-        tryChangeState(to: .inProgress)
+        tryChangeState(to: .cancelled)
     }
     
     @discardableResult public func finish() -> Bool {
