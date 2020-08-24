@@ -8,18 +8,18 @@
 
 import Foundation
 
-extension URLResponse {
+public extension URLResponse {
     
-    public var httpURLResponse: HTTPURLResponse? {
+    var httpURLResponse: HTTPURLResponse? {
         self as? HTTPURLResponse
     }
     
-    public var status: ResponseStatus {
+    var status: ResponseStatus {
         guard let statusCode = httpURLResponse?.statusCode else { return .unknown }
         return ResponseStatus(rawValue: statusCode) ?? .unknown
     }
     
-    public enum ResponseStatus: Int {
+    enum ResponseStatus: Int {
         
         public enum ResponseStatusType {
             case informational

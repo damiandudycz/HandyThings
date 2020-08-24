@@ -8,22 +8,6 @@
 
 import Combine
 
-@propertyWrapper
-public class CurrentValue<Value> {
-    
-    public var wrappedValue: Value {
-        get { projectedValue.value }
-        set { projectedValue.value = newValue }
-    }
-    
-    public var projectedValue: CurrentValueSubject<Value, Never>
-    
-    public init(wrappedValue: Value) {
-        self.projectedValue = CurrentValueSubject(wrappedValue)
-    }
-    
-}
-
 public extension Publisher {
     
     typealias Change = (oldValue: Output, newValue: Output)
