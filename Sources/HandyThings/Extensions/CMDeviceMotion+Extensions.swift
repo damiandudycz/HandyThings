@@ -26,10 +26,10 @@ public extension CMDeviceMotion {
     
     var rotation: Double { atan2(gravity.x, gravity.y) + .pi }
 
-    // This value is available directly in CMDeviceMotion. It could be calculated like this:
-    //    var heading: DeviceOrientation {
-    //        // Compensate compass rotation for device rotation.
-    //        return (compassDirection - rotation).rotateTo(.pi * 2)
-    //    }
+//     This value is available directly in CMDeviceMotion. It could be calculated like this:
+//        var heading: DeviceOrientation {
+//            // Compensate compass rotation for device rotation.
+//            return (compassDirection - rotation).rotateTo(.pi * 2)
+//        }
     
 }
