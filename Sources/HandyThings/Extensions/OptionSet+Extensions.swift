@@ -13,3 +13,18 @@ public extension OptionSet where RawValue == Int {
     }
     
 }
+
+public protocol OptionSetInitiableByName {
+    init?(name: String)
+    static var named: [String : Self] { get }
+}
+
+public extension OptionSetInitiableByName where Self: OptionSet {
+    init?(name: String) {
+        guard let match = Self.named[name] else { return nil }
+        self = match            
+    }
+    init(names: [String]) {
+        self = names.compactMap({ Self(name: $0) }).joined
+    }
+}
